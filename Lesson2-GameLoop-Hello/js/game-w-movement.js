@@ -31,9 +31,9 @@ function update() {
 function draw() {
 	counter++;
 	backgroundImage.onload = function() {
-        backgroundContext.drawImage(backgroundImage, 0, 0,438,300);
-      };
-      backgroundImage.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+	    backgroundContext.drawImage(backgroundImage, 0, 0,640,480);
+	};
+	backgroundImage.src = 'images/gamebackground.jpg';
 	
 	gameContext.fillStyle = "#000"; // Set color to black
 	gameContext.font = 'italic 16px Calibri';
