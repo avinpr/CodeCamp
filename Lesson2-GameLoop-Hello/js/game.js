@@ -2,14 +2,10 @@
 var CANVAS_WIDTH = 600;
 var CANVAS_HEIGHT = 400;
 var counter = 0;
-var canvasElement = $("<canvas width='" + CANVAS_WIDTH + 
-                      "' height='" + CANVAS_HEIGHT + "'></canvas>");
-var canvas = canvasElement.get(0).getContext("2d");
+var gameCanvas = document.getElementById("gameElements");
+var gameContext = gameCanvas.getContext("2d");
 var textX = 50;
 var textY = 50;
-
-canvasElement.appendTo('#gameContainer');
-
 
 var FPS = 30;
 setInterval(function() {
@@ -22,22 +18,11 @@ function update() {
 }
 function draw() {
 	counter++;
-	canvas.fillStyle = "#000"; // Set color to black
-	canvas.font = 'italic 40pt Calibri';
-	canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
- 	canvas.fillText("I'm counting! " + counter , textX, textY);
+	gameContext.fillStyle = "#000"; // Set color to black
+	gameContext.font = 'italic 20pt Calibri';
+	gameContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+ 	gameContext.fillText("I'm counting! " + counter , textX, textY);
 }
 
-function update_with_movement() {
-	if (textX < 400) {
-		textX += 1;
- 		textY += 1;
-	}
-	else {
-		textX = 50;
-		textY = 50;
-	}
-	
-}
 
 

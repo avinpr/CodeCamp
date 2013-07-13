@@ -10,17 +10,20 @@ var canvasElement = $("<canvas width='" + CANVAS_WIDTH +
 var canvas = canvasElement.get(0).getContext("2d");
 var textX = 50;
 var textY = 50;
+var imageObj = new Image();
 
 canvasElement.appendTo('#gameContainer');
 
 var player = {
+  shotcounter:0,
   color: "#00A",
   x: 220,
-  y: 270,
+  y: 470,
   width: 32,
   height: 32,
   shoot:function() {
-    console.log("Pew pew");
+    this.shotcounter++;
+    console.log("Pew pew : " + this.shotcounter);
     // :) Well at least adding the key binding was easy...
   },
   draw: function() {
@@ -61,6 +64,11 @@ function update() {
 
 function draw() {
 	canvas.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+  imageObj.onload = function() {
+        canvas.drawImage(imageObj, 69, 50);
+      };
+      imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
   	player.draw();
 }
 
