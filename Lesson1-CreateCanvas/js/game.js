@@ -1,6 +1,6 @@
 
-var CANVAS_WIDTH = 480;
-var CANVAS_HEIGHT = 320;
+var CANVAS_WIDTH = 640;
+var CANVAS_HEIGHT = 480;
 var counter = 0;
 var gameCanvas = document.getElementById("gameElements");
 var gameContext = gameCanvas.getContext("2d");

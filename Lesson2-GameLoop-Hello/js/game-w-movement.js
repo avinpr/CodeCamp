@@ -1,6 +1,6 @@
 
-var CANVAS_WIDTH = 600;
-var CANVAS_HEIGHT = 400;
+var CANVAS_WIDTH = 640;
+var CANVAS_HEIGHT = 480;
 var counter = 0;
 var backgroundCanvas = document.getElementById("gameBackground");
 var gameCanvas = document.getElementById("gameElements");
