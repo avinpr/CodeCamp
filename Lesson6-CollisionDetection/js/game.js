@@ -23,21 +23,13 @@ var player = {
   }
 };
 
+var enemy = new Enemy();
+
 var FPS = 30;
 setInterval(function() {
   update_faster_w_clamp();
   draw();
 }, 1000/FPS);
-
-function update() {
-	if (keydown.left) {
-		player.x -= 2;
-	}
-
-	if (keydown.right) {
-		player.x += 2;
-	}
-}
 
 function update_faster_w_clamp() {
   if (keydown.left) {
@@ -49,6 +41,11 @@ function update_faster_w_clamp() {
   }
 
   player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
+  enemy.update();
+
+  if(hasCollided(player, enemy)){
+    enemy.explode();
+  }
 }
 
 function draw() {
@@ -59,8 +56,12 @@ function draw() {
   backgroundImage.src = 'images/gamebackground.jpg';
 	gameContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   player.draw();
+  if(enemy.active) enemy.draw();
 }
 
-
-
-
+function hasCollided(objectA, objectB){
+  return objectA.x < objectB.x + objectB.width &&
+         objectA.x + objectA.width > objectB.x &&
+         objectA.y < objectB.y + objectB.height &&
+         objectA.y + objectA.height > objectB.y;
+}
