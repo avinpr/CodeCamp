@@ -19,7 +19,7 @@ function Enemy() {
 	this.sprite = Sprite("enemy");
 
 	this.draw = function() {
-    	this.sprite.draw(canvas, this.x, this.y);
+    	this.sprite.draw(gameContext, this.x, this.y);
 	};
 
 	this.update = function() {

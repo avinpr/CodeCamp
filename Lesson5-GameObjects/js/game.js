@@ -23,13 +23,15 @@ var player = {
   }
 };
 
+var enemy = new Enemy();
+
 var FPS = 30;
 setInterval(function() {
   update_faster_w_clamp();
   draw();
 }, 1000/FPS);
 
-function update() {
+/*function update() {
 	if (keydown.left) {
 		player.x -= 2;
 	}
@@ -37,7 +39,7 @@ function update() {
 	if (keydown.right) {
 		player.x += 2;
 	}
-}
+}*/
 
 function update_faster_w_clamp() {
   if (keydown.left) {
@@ -49,6 +51,9 @@ function update_faster_w_clamp() {
   }
 
   player.x = player.x.clamp(0, CANVAS_WIDTH - player.width);
+
+  ////////
+  enemy.update();
 }
 
 function draw() {
@@ -59,6 +64,6 @@ function draw() {
   backgroundImage.src = 'images/gamebackground.jpg';
 	gameContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   player.draw();
+  ////////
+  enemy.draw();
 }
-
-

@@ -15,8 +15,8 @@ function Bullet(xPosition, yPosition, speed) {
 	};
 
    	this.draw = function() {
-        canvas.fillStyle = this.color;
-        canvas.fillRect(this.x, this.y, this.width, this.height);
+        gameCanvas.fillStyle = this.color;
+        gameCanvas.fillRect(this.x, this.y, this.width, this.height);
     };
 
 	this.update = function() {
