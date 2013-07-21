@@ -9,6 +9,25 @@ var gameContext = gameCanvas.getContext("2d");
 var textX = 50;
 var textY = 50;
 var score = 0;
+var gameEnded = false;
+
+/*****/
+var gameTime = 30; //seconds
+var gameCounter = 0;
+var timeRemainingContainer = document.getElementById("timeRemaining");
+var gameInterval = window.setInterval(function(){
+    timeRemainingContainer.innerHTML = gameTime - gameCounter;
+    gameCounter++;   
+    if(gameCounter >= gameTime){
+        //end game
+        gameCounter = 0;
+        gameEnded = true;
+        alert("Game complete!!!");
+        window.clearInterval(gameInterval);
+    }
+}, 1000);
+
+/*****/
 
 //Collections
 var enemies = new Array();
@@ -48,8 +67,10 @@ var player = {
 
 var FPS = 30;
 setInterval(function() {
-  update_faster_w_clamp();
-  draw();
+  if(!gameEnded) {
+    update_faster_w_clamp();
+    draw();
+  }
 }, 1000/FPS);
 
 function update_faster_w_clamp() {
@@ -117,7 +138,6 @@ function draw() {
 
 function updateScore(){
   document.getElementById("score").innerHTML = score;
-  console.log(score + "," + enemies.length + "," + playerBullets.length);
 }
 
 function handleCollisions(){
