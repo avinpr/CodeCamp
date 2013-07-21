@@ -117,6 +117,7 @@ function draw() {
 
 function updateScore(){
   document.getElementById("score").innerHTML = score;
+  console.log(score + "," + enemies.length + "," + playerBullets.length);
 }
 
 function handleCollisions(){
